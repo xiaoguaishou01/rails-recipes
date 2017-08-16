@@ -7,6 +7,7 @@ class Event < ApplicationRecord
  STATUS = ["draft", "public", "private"]
  validates_inclusion_of :status, :in => STATUS
  belongs_to :category, :optional => true
+ has_many :tickets, :dependent => :destroy
 
  def to_param
    self.friendly_id
