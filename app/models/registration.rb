@@ -5,6 +5,7 @@ class Registration < ApplicationRecord
   attr_accessor :current_step
   validates_presence_of :name, :email, :cellphone, :if => :should_validate_basic_data?
   validates_presence_of :name, :email, :cellphone, :bio, :if => :should_validate_all_data?#有条件的表单验证
+  validate :check_event_status, :on => :create
 
   belongs_to :event
   belongs_to :ticket
@@ -28,5 +29,11 @@ class Registration < ApplicationRecord
 
   def should_validate_all_data?
     current_step == 3 || status == "confirmed" #做到第三步， 或最后状态是confirmed时需要验证
+  end
+
+  def check_event_status
+    if self.event.status == "draft"
+      errors.add(:base, "活动尚未开放报名")
+    end
   end
 end
