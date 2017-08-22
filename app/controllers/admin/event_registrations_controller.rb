@@ -2,7 +2,8 @@ class Admin::EventRegistrationsController < ApplicationController
   before_action :find_event
 
   def index
-    @registrations = @event.registrations.includes(:ticket).order("id DESC").page(params[:page])
+    @q = @event.registrations.ransack(params[:q])
+    @registrations = @q.result.includes(:ticket).order("id DESC").page(params[:page])
 
     #if params[:status].present? && Registration::STATUS.include?(params[:status])
     if Array(params[:statuses]).any?
