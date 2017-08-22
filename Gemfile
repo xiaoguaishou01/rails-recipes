@@ -48,6 +48,7 @@ gem "bootstrap-datepicker-rails"
 gem "ckeditor"
 gem "ranked-model"
 gem "jquery-ui-rails" #拖拉的前端套件
+gem "kaminari" #分页套件 与will_paginate大同小异
 
 group :development, :test do
   gem 'rspec-rails'
