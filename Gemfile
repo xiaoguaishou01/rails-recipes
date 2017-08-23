@@ -51,6 +51,9 @@ gem "jquery-ui-rails" #拖拉的前端套件
 gem "kaminari" #分页套件 与will_paginate大同小异
 gem "ransack" #关键字搜寻
 gem "paper_trail" #软删除和版本控制
+gem "rubyzip" # 汇出 Excel 档案
+gem "axlsx" # 汇出 Excel 档案
+gem "axlsx_rails"  # 汇出 Excel 档案
 
 group :development, :test do
   gem 'rspec-rails'
